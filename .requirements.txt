@@ -1,0 +1,4 @@
+pygame
+pycaw
+comtypes
+pywin32
