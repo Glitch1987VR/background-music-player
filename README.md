@@ -9,4 +9,4 @@ Currently wait-times and directory locations can only be edited via the script (
 more "instructions" in the script.
 
 You'll need to install pip and then run:
-``pip install -r "path\to\\.requirements.txt"``
+``pip install -r "path\to\.requirements.txt"``
