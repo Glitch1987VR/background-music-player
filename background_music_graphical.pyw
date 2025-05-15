@@ -21,7 +21,7 @@ import os
 
 ##### VARIABLES #####
 silence_delay = 5  # seconds to wait before playing music on silence
-folder_path = "C:/Users/glitc/Documents/Bodenlos/Python/background_music/files" # the folder containing your .mp3s (note: .wav is enabled but not tested)
+folder_path = "C:/Users/glitc/Documents/Bodenlos/Python/background-music-player/files" # the folder containing your .mp3s (note: .wav is enabled but not tested)
 
 
 
