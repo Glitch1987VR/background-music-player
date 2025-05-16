@@ -10,7 +10,7 @@ def create_image():
     return image
 
 def on_quit(icon, item):
-    gui_stop
+    gui_stop()
 
 def on_show(icon, item):
     root.after(0, root.deiconify)
