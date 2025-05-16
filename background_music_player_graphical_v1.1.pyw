@@ -1,3 +1,51 @@
+###### TRAY SUPPORT ######
+from PIL import Image, ImageDraw
+import pystray
+
+def create_image():
+    # a simple icon (red circle)
+    image = Image.new('RGB', (64, 64), color=(255, 0, 0))
+    draw = ImageDraw.Draw(image)
+    draw.ellipse((16, 16, 48, 48), fill=(255, 255, 255))
+    return image
+
+def on_quit(icon, item):
+    gui_stop
+
+def on_show(icon, item):
+    root.after(0, root.deiconify)
+
+def on_pause_resume(icon, item):
+    global monitoring
+    monitoring = not monitoring
+    if monitoring:
+        print("Resumed from tray.")
+        gui_start()
+    else:
+        print("Paused from tray.")
+        gui_pause()
+
+def setup_tray():
+    menu = pystray.Menu(
+        pystray.MenuItem("Show Window", on_show),
+        pystray.MenuItem("Pause/Resume System", on_pause_resume),
+        pystray.MenuItem("Next Track", lambda icon, item: gui_next()),
+        pystray.MenuItem("Exit", on_quit)
+    )
+    icon = pystray.Icon("background_player", create_image(), "Background Music Player", menu)
+    icon.run()
+
+def hide_window():
+    root.withdraw()  # hides the window (can be restored from tray)
+
+
+
+
+
+###########################
+###### MAIN PROGRAMM ######
+###########################
+
 import time
 import threading
 from ctypes import cast, POINTER
@@ -326,7 +374,10 @@ def gui_loop():
     next_btn = tk.Button(root, text="Next file (not reliable)", command=gui_next, width=20)
     next_btn.grid(column=1, row=4)
 
+    root.protocol("WM_DELETE_WINDOW", hide_window)
+    threading.Thread(target=setup_tray, daemon=True).start()
     root.mainloop()
+
 
 def update_window_title(title):
     if root and root.winfo_exists():
@@ -402,3 +453,6 @@ if __name__ == "__main__":
     threading.Thread(target=start_music_cycle, daemon=True).start()
     gui_loop()
 #    threading.Thread(target=update_loop, daemon=True).start()
+
+
+

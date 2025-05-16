@@ -3,3 +3,5 @@ pycaw
 comtypes
 pywin32
 datetime
+pystray
+pillow

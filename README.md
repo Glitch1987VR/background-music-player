@@ -15,6 +15,7 @@ Use it as you want.
 7. A next file button, so you can skip the current one (not reliable)
 8. A visible log system (Note: the logs are not helpful, I know from experience)
 9. A window title which changes depending on the file playing 😱, crazy I know
+10. And it has sytem tray support wow 😮😮👏👏👏
 
 ![alt text](background-music-player-graphicial-v1.1.png)
 
