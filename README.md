@@ -16,13 +16,15 @@ Use it as you want.
 8. A visible log system (Note: the logs are not helpful, I know from experience)
 9. A window title which changes depending on the file playing 😱, crazy I know
 10. And it has sytem tray support wow 😮😮👏👏👏
+11. Processes to exclude in detection can easily be edited without having to edit the script
 
-![alt text](background-music-player-graphicial-v1.1.png)
+![main menu](background-music-player-graphicial-v1.2.png)
+![tray menu](background-music-player-graphicial-tray-v1.2.png)
 
 To tweak things outside the gui boundaries, check the contents of .pyw
 I have left some comments with instructions/possibilities there
 
-# usage/installation
+# installation
 1. download the .pyw in the root folder (for ease of use, put it in an empty folder) (older versions can be found in old_files)
 2. download .requirement.txt (you can put it in the same folder as the .pyw)
 3. make sure you have [python](https://www.python.org) and [pip](https://pypi.org/project/pip/) on your system

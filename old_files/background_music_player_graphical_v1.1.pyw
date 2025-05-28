@@ -4,9 +4,23 @@ import pystray
 
 def create_image():
     # a simple icon (red circle)
-    image = Image.new('RGB', (64, 64), color=(255, 0, 0))
+#    image = Image.new('RGB', (64, 64), color=(255, 0, 0))
+#    draw = ImageDraw.Draw(image)
+#    draw.ellipse((16, 16, 48, 48), fill=(255, 255, 255))
+#    return image
+
+    # a note (I think)
+    image = Image.new('RGBA', (64, 64), (0, 0, 0, 0))  # transparent background
     draw = ImageDraw.Draw(image)
-    draw.ellipse((16, 16, 48, 48), fill=(255, 255, 255))
+
+    note_color_head = (255, 0, 150, 255)  # Magenta
+    note_color_stem = (0, 255, 200, 255)  # Aqua
+    note_color_flag = (255, 215, 0, 255)  # Gold
+
+    draw.ellipse((24, 30, 48, 54), fill=note_color_head)
+    draw.line((26, 30, 26, 8), fill=note_color_stem, width=6)
+    draw.line((26, 8, 10, 18), fill=note_color_flag, width=6)
+
     return image
 
 def on_quit(icon, item):
@@ -337,6 +351,8 @@ def gui_loop():
     root = tk.Tk()
     root.title("Background Music Player")
 
+    set_window_icon()
+
     start_btn = tk.Button(root, text="Start / Resume System", command=gui_start, width=20)
     pause_btn = tk.Button(root, text="Pause System", command=gui_pause, width=20)
     stop_btn = tk.Button(root, text="Stop & Exit System", command=gui_stop, width=20)
@@ -382,6 +398,14 @@ def gui_loop():
 def update_window_title(title):
     if root and root.winfo_exists():
         root.after(0, lambda: root.title(title))
+
+from PIL import ImageTk
+def set_window_icon():
+    icon_image = create_image().resize((32, 32))  # Resize for window icon
+    tk_icon = ImageTk.PhotoImage(icon_image)
+    root.iconphoto(False, tk_icon)
+    # Keep reference to avoid garbage collection
+    root.tk_icon = tk_icon
 
 
 
